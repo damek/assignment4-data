@@ -1,7 +1,7 @@
 from fastwarc.warc import ArchiveIterator, WarcRecordType
 from resiliparse.parse.encoding import detect_encoding, bytes_to_str
 from resiliparse.extract.html2text import extract_plain_text
-from argparse import ArgumentParser
+import os
 
 def extract_text_from_html_bytes(html_bytes: bytes) -> str:
     if not html_bytes:
