@@ -54,4 +54,6 @@ Deliverable: A 2-5 sentence response.
 
 **Answer:**
 
-I observed zero mistakes. Suitable confidence threshold is .9. 
+There was one non toxic that included belittling language in russian (according to chatgpt). It's score was .8. I asked it to translate parts it seem there are indeed slightly toxic language. So perhaps .75 is a good for toxic and .7 is a goo threshood for nsfw.
+
+But in my 50 random examples, I didn't find much harmful content.
