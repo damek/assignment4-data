@@ -45,7 +45,7 @@ if __name__ == "__main__":
     languages, texts = extract_warc_and_detect_langauge(20)
     for l,text in zip(languages, texts):
         print("--------------------------------")
-        print("LANGUAGE: ", l)
+        print("LANGUAGE: ", l[0], "SCORE: ", l[1])
         print("text: ", text)
         print("--------------------------------")
 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     with open("outputs/language_identification.txt", "w") as f:
         for l,text in zip(languages, texts):
             f.write("--------------------------------\n")
-            f.write("LANGUAGE: " + l + "\n")
+            f.write("LANGUAGE: " + l[0] + " SCORE: " + str(l[1]) + "\n")
             f.write("text: " + text + "\n")
             f.write("--------------------------------\n")
     # now for each lsample and language 
