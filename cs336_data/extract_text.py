@@ -34,7 +34,6 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
             if len(text) == nb_of_entries:
                 break
     return text
-        # Process the payload as needed
 
 def hard_coded_extract_warc_file():
     warc_file = "data/CC/example.warc.gz"
