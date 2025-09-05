@@ -56,6 +56,8 @@ def extract_warc_and_detect_harmful_content(nb_entries: int = 20) -> list[str]:
             total_entries += 1
     print("Total entries: ", total_entries)
     return nsfw_labels, hatespeech_labels, texts
+
+    
 if __name__ == "__main__":
 
     # first print then save to outputs/harmful_content.txt
