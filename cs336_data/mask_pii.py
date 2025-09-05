@@ -3,7 +3,7 @@ import os
 import random
 from fastwarc.warc import ArchiveIterator, WarcRecordType
 from cs336_data.extract_text import extract_text_from_html_bytes
-s
+
 _EMAIL_RE = re.compile(r"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b")
 
 def mask_emails(text: str) -> tuple[str, int]:
