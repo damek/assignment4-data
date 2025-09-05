@@ -59,12 +59,12 @@ if __name__ == "__main__":
     nsfw_labels, hatespeech_labels, texts = extract_warc_and_detect_harmful_content(20)
     for nsfw_label, hatespeech_label, text in zip(nsfw_labels, hatespeech_labels, texts):
         print("--------------------------------")
-        print("NSFW LABEL: ", nsfw_label[0], "HATESPEECH LABEL: ", hatespeech_label[0])
+        print("NSFW LABEL: ", nsfw_label[0], "SCORE: ", nsfw_label[1], "HATESPEECH LABEL: ", hatespeech_label[0], "SCORE: ", hatespeech_label[1])
         print("text: ", text)
         print("--------------------------------")
     with open("outputs/harmful_content.txt", "w") as f:
         for nsfw_label, hatespeech_label, text in zip(nsfw_labels, hatespeech_labels, texts):
             f.write("--------------------------------\n")
-            f.write("NSFW LABEL: " + nsfw_label[0] + " HATESPEECH LABEL: " + hatespeech_label[0] + "\n")
+            f.write("NSFW LABEL: " + nsfw_label[0] + " SCORE: " + str(nsfw_label[1]) + " HATESPEECH LABEL: " + hatespeech_label[0] + " SCORE: " + str(hatespeech_label[1]) + "\n")
             f.write("text: " + text + "\n")
             f.write("--------------------------------\n")
