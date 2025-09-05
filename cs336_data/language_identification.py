@@ -7,11 +7,16 @@ def _model():
     return fasttext.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/lid.176.bin"))
 
 def identify_language_str(text: str) -> str:
-    predicted_language, score = _model().predict(text)
-    # extract language from predicted_language
-    predicted_language = predicted_language[0].split("__label__")[1]
-    print(predicted_language, score)
-    return predicted_language, score[0]
+    # text can include multiple lines, so we need to figure out majority languaage
+    # split text into lines
+    lines = text.split("\n")
+    # identify language of each line
+    languages = []
+    for line in lines:
+        predicted_language, score = _model().predict(line)
+        languages.append(predicted_language[0].split("__label__")[1])
+    # return majority language
+    return max(set(languages), key=languages.count), 1.0   
 
 def identify_language_file(file: str) -> str:
     with open(file, "rb") as f:
