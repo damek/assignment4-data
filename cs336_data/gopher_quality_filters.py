@@ -20,9 +20,9 @@ def gopher_quality_filter(text: str):
     lines = text.split("\n")
     if is_too_little_or_too_many_words(tokens):
         return False
-    if is_average_word_length_less_than_3(tokens) > 10:
+    if is_average_word_length_less_than_3(tokens):
         return False
-    if is_less_than_50_non_symbol_words(tokens):
+    if is_more_than_30_percent_lines_ending_with_ellipsis(lines):
         return False
     if is_less_than_80_percent_words_with_at_least_one_alphabetic_character(tokens):
         return False
