@@ -16,7 +16,9 @@
 - Harmful content:
   - Code: [harmful_content.py](./cs336_data/harmful_content.py)
   - Writeup: [harmful_content.md](./cs336_data/outputs/harmful_content.md)
-
+- Gopher quality filters:
+  - Code: [gopher_quality_filters.py](./cs336_data/gopher_quality_filters.py)
+  - Writeup: [gopher_quality_filters.md](./cs336_data/outputs/gopher_quality_filters.md)
 
 ## How to run my code 
 
