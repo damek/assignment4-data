@@ -18,17 +18,43 @@ def _model_Hatespeech():
 NSFW_MODEL = _model_NSFW()
 HATESPEECH_MODEL = _model_Hatespeech()
 
-def classify_nsfw(text: str):
-    # remove newlines
+_PRESENCE_THRESH = 0.80
+
+def _max_prob_for_label(model, text, positive_label: str, size: int = 1000, stride: int = 800) -> float:
+    # collapse newlines like your original, then chunk
     text = text.replace("\n", " ")
-    predicted_class, score = NSFW_MODEL.predict(text)
-    return predicted_class[0].split("__label__")[1], score[0]
+    if not text:
+        return 0.0
+    best = 0.0
+    for i in range(0, len(text), stride):
+        chunk = text[i:i+size]
+        # same API/vars as your code
+        predicted_class, score = model.predict(chunk, k=2)
+        labels = [lbl.split("__label__")[1] for lbl in predicted_class]
+        for lbl, sc in zip(labels, score):
+            if lbl == positive_label and float(sc) > best:
+                best = float(sc)
+        if i + size >= len(text):
+            break
+    return best
+
+def classify_nsfw(text: str):
+    # remove newlines (kept for style)
+    text = text.replace("\n", " ")
+    p = _max_prob_for_label(NSFW_MODEL, text, "nsfw")
+    label = "nsfw" if p >= _PRESENCE_THRESH else "clean"
+    return label, p
 
 def classify_hatespeech(text: str):
-    # remove newlines
+    # remove newlines (kept for style)
     text = text.replace("\n", " ")
-    predicted_class, score = HATESPEECH_MODEL.predict(text)
-    return predicted_class[0].split("__label__")[1], score[0]
+    # Try common positive label names; keep the max
+    p = max(
+        _max_prob_for_label(HATESPEECH_MODEL, text, "hatespeech"),
+        _max_prob_for_label(HATESPEECH_MODEL, text, "toxic"),
+    )
+    label = "hatespeech" if p >= _PRESENCE_THRESH else "clean"
+    return label, p
 
 
 def extract_warc_and_detect_harmful_content(nb_entries: int = 20) -> list[str]:

@@ -10,6 +10,13 @@
 - Language identification: 
   - Code: [language_identification.py](./cs336_data/language_identification.py)
   - Writeup: [language_identification.md](./cs336_data/outputs/language_identification.md)
+- Mask PII:
+  - Code: [mask_pii.py](./cs336_data/mask_pii.py)
+  - Writeup: [mask_pii.md](./cs336_data/outputs/mask_pii.md)
+- Harmful content:
+  - Code: [harmful_content.py](./cs336_data/harmful_content.py)
+  - Writeup: [harmful_content.md](./cs336_data/outputs/harmful_content.md)
+
 
 ## How to run my code 
 
