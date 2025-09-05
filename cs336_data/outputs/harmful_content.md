@@ -46,10 +46,12 @@ Deliverable: A 2-5 sentence response.
 ## Question 4
 
 Run your harmful content filters on text extracted from the WARC files (via your previously-
-implemente  d text extraction function). Look through 20 random examples and compare the
+implemented text extraction function). Look through 20 random examples and compare the
 classifier predictions to your own judgments. Report any classifier errors. What fraction of
 documents are harmful? Based on your observations, what would be suitable classifier confidence
 threshold(s) to use in filtering?
 Deliverable: A 2-5 sentence response.
 
 **Answer:**
+
+I observed zero mistakes. Suitable confidence threshold is .9. 
