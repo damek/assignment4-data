@@ -23,4 +23,4 @@ def classify_hatespeech(text: str):
 
 if __name__ == "__main__":
     print(classify_nsfw("OMFG"))
-    print(classify_hatespeech("FUCK YOU"))
+    print(classify_hatespeech("This is a test"))
