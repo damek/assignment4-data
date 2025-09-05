@@ -21,3 +21,13 @@ def extract_text_from_html_bytes(html_bytes: bytes) -> str:
     
     # extract text
     return extract_plain_text(html_str)
+
+def extract_warc_file(warc_file: str) -> str:
+    # use fastwarc to first entry of warc file, extract text from html, and then print to terminal
+    text = ""
+    with open(warc_file, "rb") as f:
+        for record in ArchiveIterator(f):
+            if record.type == WarcRecordType.RESPONSE:
+                text = extract_text_from_html_bytes(record.content)
+                break
+    return text
