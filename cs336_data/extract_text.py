@@ -38,3 +38,6 @@ def hard_coded_extract_warc_file():
     warc_file = "data/CC/example.warc.gz"
     text = extract_warc_file(warc_file)
     print(text)
+
+if __name__ == "__main__":
+    hard_coded_extract_warc_file()
