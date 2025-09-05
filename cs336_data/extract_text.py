@@ -29,7 +29,7 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
     with open(warc_file, "rb") as f:
         for record in ArchiveIterator(f):
             print(f"Record type: {record.record_type}")
-            print(f"Record URI: {record.uri}")
+            print(f"Record URI: {record.record_header.uri}")
         # Read the record's payload (content)
             payload = record.reader.read()
             text.append(extract_text_from_html_bytes(payload))
