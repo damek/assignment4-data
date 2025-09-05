@@ -40,8 +40,8 @@ def extract_warc_and_mask_pii(nb_entries: int = 20) -> list[str]:
             if i in entries:
                 text = extract_text_from_html_bytes(record.reader.read())
                 masked_text = mask_emails(text)[0]
-                masked_text = mask_phone_numbers(text)[0]
-                masked_text = mask_ips(text)[0]
+                masked_text = mask_phone_numbers(masked_text)[0]
+                masked_text = mask_ips(masked_text)[0]
                 masked_texts.append(masked_text)
             if len(masked_texts) == nb_entries:
                 break
