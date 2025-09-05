@@ -45,7 +45,12 @@ def extract_warc_and_gopher_quality_filter(nb_entries: int = 20) -> list[str]:
     if not os.path.exists(file):
         os.system("bash look_at_cc.sh")
     # We're going to pick 20 entries at random from the first 100000 entries 
-    entries = random.sample(range(100000), nb_entries)
+    total_entries = 0
+    with open(file, "rb") as f:
+        for i, record in enumerate(ArchiveIterator(f, record_types=WarcRecordType.response)):
+            total_entries += 1
+    print("Total entries: ", total_entries)
+    entries = random.sample(range(total_entries), nb_entries)
     total_entries = 0
     with open(file, "rb") as f:
         for i, record in enumerate(ArchiveIterator(f, record_types=WarcRecordType.response)):
@@ -54,20 +59,13 @@ def extract_warc_and_gopher_quality_filter(nb_entries: int = 20) -> list[str]:
                 labels.append(gopher_quality_filter(text))
                 texts.append(text)
             if len(texts) == nb_entries:
-                break
-            total_entries += 1
-    print("Total entries: ", total_entries)
+                break   
     return labels, texts
 
 
 if __name__ == "__main__":
 
     labels, texts = extract_warc_and_gopher_quality_filter(50)
-    for label, text in zip(labels, texts):
-        print("--------------------------------")
-        print("LABEL: ", label)
-        print("text: ", text)
-        print("--------------------------------")
     with open("outputs/gopher_quality_filter.txt", "w") as f:
         for label, text in zip(labels, texts):
             f.write("--------------------------------\n")
