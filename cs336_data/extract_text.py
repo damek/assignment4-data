@@ -27,7 +27,7 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
     # use fastwarc to first entry of warc file, extract text from html, and then return a list of entries
     text = []
     with open(warc_file, "rb") as f:
-        for record in ArchiveIterator(f):
+        for record in ArchiveIterator(f, record_types=WarcRecordType.request | WarcRecordType.response):
         # Read the record's payload (content)
             payload = record.reader.read()
             text.append(extract_text_from_html_bytes(payload))
