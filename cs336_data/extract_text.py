@@ -40,4 +40,5 @@ def hard_coded_extract_warc_file():
     print(text)
 
 if __name__ == "__main__":
+    print("Hard coded extract warc file")
     hard_coded_extract_warc_file()
