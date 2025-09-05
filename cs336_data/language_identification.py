@@ -1,7 +1,7 @@
 ## Make sure you run bash language_identification.sh to download the model first.
 import fasttext
 import os
-import extract_text
+# import extract_text
 
 def _model():
     # need to give the path relative to this script
