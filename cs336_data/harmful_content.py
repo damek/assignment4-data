@@ -1,8 +1,7 @@
 import fasttext
 import os
 import random
-from fastwarc.archive import ArchiveIterator
-from fastwarc.warc import WarcRecordType
+from fastwarc.warc import ArchiveIterator, WarcRecordType
 from cs336_data.extract_text import extract_text_from_html_bytes
 
 def _model_NSFW():
