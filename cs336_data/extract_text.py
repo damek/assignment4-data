@@ -23,7 +23,7 @@ def extract_text_from_html_bytes(html_bytes: bytes) -> str:
     # extract text
     return extract_plain_text(html_str)
 
-def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
+def extract_warc_file(warc_file: str, nb_entries: int = 1) -> str:
     # use fastwarc to first entry of warc file, extract text from html, and then return a list of entries
     text = []
     with open(warc_file, "rb") as f:
@@ -31,7 +31,7 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
         # Read the record's payload (content)
             payload = record.reader.read()
             text.append(extract_text_from_html_bytes(payload))
-            if len(text) == nb_of_entries:
+            if len(text) == nb_entries:
                 break
     return text
 
