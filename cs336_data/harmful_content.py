@@ -2,7 +2,7 @@ import fasttext
 import os
 import random
 from fastwarc.warc import ArchiveIterator, WarcRecordType
-from cs336_data.extract_text import extract_text_from_html_bytes
+import cs336_data.extract_text as extract_text
 
 def _model_NSFW():
     if not os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/jigsaw_fasttext_bigrams_nsfw_final.bin")):
