@@ -38,7 +38,7 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
 
 def hard_coded_extract_warc_file():
     warc_file = "data/CC/example.warc.gz"
-    text = extract_warc_file(warc_file, 10)
+    text = extract_warc_file(warc_file, 1)
     print(text)
 
 if __name__ == "__main__":
