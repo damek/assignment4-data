@@ -28,11 +28,15 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
     text = []
     with open(warc_file, "rb") as f:
         for record in ArchiveIterator(f):
-            if record.type == WarcRecordType.RESPONSE:
-                text.append(extract_text_from_html_bytes(record.content))
-                if len(text) == nb_of_entries:
-                    break
+            print(f"Record type: {record.rec_type}")
+            print(f"Record URI: {record.uri}")
+        # Read the record's payload (content)
+            payload = record.reader.read()
+            text.append(extract_text_from_html_bytes(payload))
+            if len(text) == nb_of_entries:
+                break
     return text
+        # Process the payload as needed
 
 def hard_coded_extract_warc_file():
     warc_file = "data/CC/example.warc.gz"
