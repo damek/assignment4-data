@@ -62,7 +62,7 @@ What problems do you think might arise downstream in a language model when these
 naïvely applied on the training set? How might you mitigate these issues?
 Deliverable: A 2-5 sentence response.
 
-**Answer:** When a user inputs data into a language model, they will not mask emails. So essentially need to pre-convert their inputs to mask emails. I think that posses a problem for disambiguation later on: which email address did |||EMAIL_ADDRESS||| refer to? Same issue can happen with phone numbers and ips, unfortunately.
+**Answer:** When a user inputs data into a language model, they will not mask emails. So essentially need to pre-convert their inputs to mask emails. I think that posses a problem for disambiguation later on: which email address did |||EMAIL_ADDRESS||| refer to? Same issue can happen with phone numbers and ips, unfortunately. The word for this is of course distribution shift.
 
 ## Question 5
 
@@ -71,3 +71,10 @@ implemented text extraction function). Look through 20 random examples where a r
 was made; give some examples of false positives and false negatives.
 Deliverable: A 2-5 sentence response.
 
+False positives:
+```
+894 303 895 |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER|||
+```
+
+False Negatives: 
+Missed all the non US number.
