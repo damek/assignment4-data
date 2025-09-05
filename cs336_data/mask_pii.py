@@ -13,7 +13,7 @@ _PHONE_RE = re.compile(r"""
 (?:\(?\s*\d{3}\s*\)?[\s.\-]*)   # area code, optional parentheses
 (?:\d{3}[\s.\-]*)               # first three
 (?:\d{4})                       # last four
-(?:\s*(?:x|ext|ext\.|#)\s*\d{1,6})?   # optional extension
+(?:\s*(?:x|ext|ext\.|\#)\s*\d{1,6})?   # optional extension; NOTE: \# escaped!
 (?!\w)                          # right boundary
 """)
 
