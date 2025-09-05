@@ -28,7 +28,7 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
     text = []
     with open(warc_file, "rb") as f:
         for record in ArchiveIterator(f):
-            print(f"Record type: {record.rec_type}")
+            print(f"Record type: {record.record_type}")
             print(f"Record URI: {record.uri}")
         # Read the record's payload (content)
             payload = record.reader.read()
