@@ -21,7 +21,7 @@ def identify_language_file(file: str) -> str:
     with open(file, "rb") as f:
         return _model().predict(f.read())
 
-def extract_warc_and_detect_langauge(file: str, nb_entries: int = 20) -> list[str]:
+def extract_warc_and_detect_langauge(file: str, nb_entries) -> list[str]:
     languages = []
     texts = []    
     # get path
@@ -31,15 +31,11 @@ def extract_warc_and_detect_langauge(file: str, nb_entries: int = 20) -> list[st
     if not os.path.exists("models/lid.176.bin"):
         os.system("bash language_identification.sh")
     # We're going to pick 20 entries at random from the first 1000 entries 
-    entries = random.sample(range(1000), nb_entries)
     with open(file, "rb") as f:
         for i, record in enumerate(ArchiveIterator(f, record_types=WarcRecordType.response)):
-            if i in entries:
-                text = extract_text.extract_text_from_html_bytes(record.reader.read())
-                languages.append(identify_language_str(text))
-                texts.append(text)
-            if len(texts) == nb_entries:
-                break
+            text = extract_text.extract_text_from_html_bytes(record.reader.read())
+            languages.append(identify_language_str(text))
+            texts.append(text)
     return languages, texts
 
 if __name__ == "__main__":
