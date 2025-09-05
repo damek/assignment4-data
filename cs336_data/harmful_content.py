@@ -1,0 +1,22 @@
+import fasttext
+import os
+
+def _model_NSFW():
+    return fasttext.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/jigsaw_fasttext_bigrams_nsfw_final.bin"))
+d
+def _model_Hatespeech():
+    return fasttext.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/jigsaw_fasttext_bigrams_hatespeech_final.bin"))
+
+# Give a persistent handle to the fasttext model
+NSFW_MODEL = _model_NSFW()
+HATESPEECH_MODEL = _model_Hatespeech()
+
+def classify_nsfw(text: str):
+    return NSFW_MODEL.predict(text)
+
+def classify_hatespeech(text: str):
+    return HATESPEECH_MODEL.predict(text)
+
+if __name__ == "__main__":
+    print(classify_nsfw("This is a test"))
+    print(classify_hatespeech("This is a test"))
