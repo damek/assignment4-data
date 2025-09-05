@@ -48,5 +48,13 @@ if __name__ == "__main__":
         print("LANGUAGE: ", l)
         print("text: ", text)
         print("--------------------------------")
+
+    # now let's write these to outputs/language_identification.txt
+    with open("outputs/language_identification.txt", "w") as f:
+        for l,text in zip(languages, texts):
+            f.write("--------------------------------\n")
+            f.write("LANGUAGE: " + l + "\n")
+            f.write("text: " + text + "\n")
+            f.write("--------------------------------\n")
     # now for each lsample and language 
     # print(identify_language_bytes("Hello, world!"))
