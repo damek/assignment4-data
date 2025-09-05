@@ -27,7 +27,7 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
     # use fastwarc to first entry of warc file, extract text from html, and then return a list of entries
     text = []
     with open(warc_file, "rb") as f:
-        for record in ArchiveIterator(f, record_types=WarcRecordType.request | WarcRecordType.response):
+        for record in ArchiveIterator(f):
         # Read the record's payload (content)
             payload = record.reader.read()
             text.append(extract_text_from_html_bytes(payload))
@@ -38,7 +38,7 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
 
 def hard_coded_extract_warc_file():
     warc_file = "data/CC/example.warc.gz"
-    text = extract_warc_file(warc_file)
+    text = extract_warc_file(warc_file, 10)
     print(text)
 
 if __name__ == "__main__":
