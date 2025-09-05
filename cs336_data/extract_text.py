@@ -40,5 +40,7 @@ def hard_coded_extract_warc_file():
     print(text)
 
 if __name__ == "__main__":
-    print("Hard coded extract warc file")
+    # if data/CC/example.warc.gz does not exist, run the following command
+    if not os.path.exists("data/CC/example.warc.gz"):
+        os.system("bash look_at_cc.sh")
     hard_coded_extract_warc_file()
