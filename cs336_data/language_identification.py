@@ -51,6 +51,5 @@ def extract_warc_and_detect_langauge(file: str, nb_entries: int = 20) -> list[st
 if __name__ == "__main__":
 
     languages, texts = extract_warc_and_detect_langauge(20)
-    for l,text in zip(languages, texts):
     # now for each lsample and language 
     # print(identify_language_bytes("Hello, world!"))
