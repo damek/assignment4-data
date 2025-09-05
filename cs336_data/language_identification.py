@@ -8,6 +8,8 @@ def _model():
 
 def identify_language_str(text: str) -> str:
     predicted_language, score = _model().predict(text)
+    # extract language from predicted_language
+    predicted_language = predicted_language[0].split("__label__")[1]
     print(predicted_language, score)
     return predicted_language[0], score[0]
 
