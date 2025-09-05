@@ -3,6 +3,7 @@ import fasttext
 import os
 import random
 import cs336_data.extract_text as extract_text
+from fastwarc.warc import ArchiveIterator, WarcRecordType
 
 def _model():
     # need to give the path relative to this script
