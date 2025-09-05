@@ -11,7 +11,7 @@ def identify_language_str(text: str) -> str:
     # extract language from predicted_language
     predicted_language = predicted_language[0].split("__label__")[1]
     print(predicted_language, score)
-    return predicted_language[0], score[0]
+    return predicted_language, score[0]
 
 def identify_language_file(file: str) -> str:
     with open(file, "rb") as f:
