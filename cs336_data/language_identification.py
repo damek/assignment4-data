@@ -7,7 +7,7 @@ def _model():
     # need to give the path relative to this script
     return fasttext.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/lid.176.bin"))
 
-def identify_language_str(text: str) -> tuple[Any, float]:
+def identify_language_str(text: str):
 
     # I don't know why we're splitting across multiplines, I think the model cares. Probably just remove those 
     text = text.replace("\n", " ")
