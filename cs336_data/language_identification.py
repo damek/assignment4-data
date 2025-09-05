@@ -15,18 +15,6 @@ def identify_language_str(text: str):
     print(predicted_language, score)
     return predicted_language[0].split("__label__")[1], score[0]
 
-    # # text can include multiple lines, so we need to figure out majority languaage
-    # # split text into lines
-    # lines = text.split("\n")
-    # # identify language of each line, choose the language with maximal total score across all lines
-    # languages = []
-    # scores = []
-    # for line in lines:
-    #     predicted_language, score = _model().predict(line)
-    #     languages.append(predicted_language[0].split("__label__")[1])
-    # # return majority language
-    # return max(set(languages), key=languages.count), score/len(lines)   
-
 def identify_language_file(file: str) -> str:
     with open(file, "rb") as f:
         return _model().predict(f.read())
@@ -53,5 +41,10 @@ def extract_warc_and_detect_langauge(file: str, nb_entries: int = 20) -> list[st
 if __name__ == "__main__":
 
     languages, texts = extract_warc_and_detect_langauge(20)
+    for l,text in zip(languages, texts):
+        print("--------------------------------")
+        print("LANGUAGE: ", l)
+        print("text: ", text)
+        print("--------------------------------")
     # now for each lsample and language 
     # print(identify_language_bytes("Hello, world!"))
