@@ -22,5 +22,5 @@ def classify_hatespeech(text: str):
     return HATESPEECH_MODEL.predict(text)
 
 if __name__ == "__main__":
-    print(classify_nsfw("This is a test"))
-    print(classify_hatespeech("This is a test"))
+    print(classify_nsfw("OMFG"))
+    print(classify_hatespeech("FUCK YOU"))
