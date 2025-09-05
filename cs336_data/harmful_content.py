@@ -42,7 +42,8 @@ def extract_warc_and_detect_harmful_content(nb_entries: int = 20) -> list[str]:
     if not os.path.exists("models/jigsaw_fasttext_bigrams_hatespeech_final.bin") or not os.path.exists("models/jigsaw_fasttext_bigrams_nsfw_final.bin"):
         os.system("bash harmful_content.sh")
     # We're going to pick 20 entries at random from the first 1000 entries 
-    entries = random.sample(range(10000), nb_entries)
+    entries = random.sample(range(100000), nb_entries)
+    total_entries = 0
     with open(file, "rb") as f:
         for i, record in enumerate(ArchiveIterator(f, record_types=WarcRecordType.response)):
             if i in entries:
@@ -52,6 +53,8 @@ def extract_warc_and_detect_harmful_content(nb_entries: int = 20) -> list[str]:
                 texts.append(text)
             if len(texts) == nb_entries:
                 break
+            total_entries += 1
+    print("Total entries: ", total_entries)
     return nsfw_labels, hatespeech_labels, texts
 if __name__ == "__main__":
 
