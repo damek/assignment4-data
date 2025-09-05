@@ -18,4 +18,5 @@ _PHONE_RE = re.compile(r"""
 """)
 
 def mask_phone_numbers(text: str) -> tuple[str, int]:
+    print(_PHONE_RE.subn("|||PHONE_NUMBER|||", text or ""))
     return _PHONE_RE.subn("|||PHONE_NUMBER|||", text or "")
