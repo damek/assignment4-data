@@ -57,16 +57,11 @@ def extract_warc_and_detect_harmful_content(nb_entries: int = 20) -> list[str]:
     print("Total entries: ", total_entries)
     return nsfw_labels, hatespeech_labels, texts
 
-    
+
 if __name__ == "__main__":
 
     # first print then save to outputs/harmful_content.txt
     nsfw_labels, hatespeech_labels, texts = extract_warc_and_detect_harmful_content(50)
-    for nsfw_label, hatespeech_label, text in zip(nsfw_labels, hatespeech_labels, texts):
-        print("--------------------------------")
-        print("NSFW LABEL: ", nsfw_label[0], "SCORE: ", nsfw_label[1], "HATESPEECH LABEL: ", hatespeech_label[0], "SCORE: ", hatespeech_label[1])
-        print("text: ", text)
-        print("--------------------------------")
     with open("outputs/harmful_content.txt", "w") as f:
         for nsfw_label, hatespeech_label, text in zip(nsfw_labels, hatespeech_labels, texts):
             f.write("--------------------------------\n")
