@@ -1,8 +1,10 @@
 ## Make sure you run bash language_identification.sh to download the model first.
 import fasttext
+import os
 
 def _model():
-    return fasttext.load_model("models/lid.176.bin")
+    # need to give the path relative to this script
+    return fasttext.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/lid.176.bin"))
 
 def identify_language_str(text: str) -> str:
     predicted_language, score = _model().predict(text)
