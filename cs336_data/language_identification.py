@@ -21,7 +21,7 @@ def identify_language_file(file: str) -> str:
     with open(file, "rb") as f:
         return _model().predict(f.read())
 
-def extract_warc_and_detect_langauge(file: str, nb_entries) -> list[str]:
+def extract_warc_and_detect_langauge(file: str) -> list[str]:
     languages = []
     texts = []    
     # get path
