@@ -38,8 +38,8 @@ def extract_warc_file(warc_file: str, nb_of_entries: int = 1) -> str:
 
 def hard_coded_extract_warc_file():
     warc_file = "data/CC/example.warc.gz"
-    text = extract_warc_file(warc_file, 1)
-    print(text)
+    texts = extract_warc_file(warc_file, 1)
+    print(texts[0])
 
 if __name__ == "__main__":
     # if data/CC/example.warc.gz does not exist, run the following command
