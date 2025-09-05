@@ -40,3 +40,13 @@ examples and compare your labels with the classifier predictions. Report any cla
 What fraction of documents are English? Based on your observations, what would be a suitable
 classifier confidence threshold to use in filtering?
 Deliverable: A 2-5 sentence response.
+
+Look at [language_identification.txt](../outputs/language_identification.txt) for the results.
+
+Seems to be 1 error in 20. When I ran the code,
+```bash
+uv run language_identification.py
+```
+I sampled 20 random from the first 10000 examples and only 1 seemed wrong. One had mixed english and french, but the confidence was low (35%).
+
+Proabbly 60% is ok for a threshold.
