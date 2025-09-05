@@ -19,10 +19,14 @@ NSFW_MODEL = _model_NSFW()
 HATESPEECH_MODEL = _model_Hatespeech()
 
 def classify_nsfw(text: str):
+    # remove newlines
+    text = text.replace("\n", " ")
     predicted_class, score = NSFW_MODEL.predict(text)
     return predicted_class[0].split("__label__")[1], score[0]
 
 def classify_hatespeech(text: str):
+    # remove newlines
+    text = text.replace("\n", " ")
     predicted_class, score = HATESPEECH_MODEL.predict(text)
     return predicted_class[0].split("__label__")[1], score[0]
 
