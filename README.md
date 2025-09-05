@@ -6,7 +6,7 @@
 runai submit cs336-dev \ -p <user> \  -i nvcr.io/nvidia/pytorch:25.06-py3 \  -g 1 --interactive --attach \  --command -- bash # replace -g 1 with -g 4 for 4 GPUs.
 git clone git@github.com:damek/assignment4-data.git
 pip install uv
-cd cs336-assignment2-systems
+cd assignment4-data
 export PATH="$HOME/.local/bin:$PATH"
 uv sync
 uv venv
