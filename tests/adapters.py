@@ -4,7 +4,7 @@ import os
 from typing import Any
 from cs336_data.extract_text import extract_text_from_html_bytes
 from cs336_data.language_identification import identify_language_str
-from cs336_data.mask_pii import mask_emails
+from cs336_data.mask_pii import mask_emails, mask_phone_numbers
 
 
 def run_extract_text_from_html_bytes(html_bytes: bytes) -> str | None:
