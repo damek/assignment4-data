@@ -1,12 +1,11 @@
 import nltk
 from nltk.tokenize import word_tokenize
-
+import re
 
 def is_too_little_or_too_many_words(tokens: list[str]):
     return len(tokens) < 50 or len(tokens) > 100000
 
 def is_average_word_length_less_than_3(tokens: list[str]):
-    print("average word length: ", sum(len(word) for word in tokens) / len(tokens))
     return (sum(len(word) for word in tokens) / len(tokens)) < 3
 
 def is_more_than_30_percent_lines_ending_with_ellipsis(lines: list[str]):
@@ -17,7 +16,6 @@ def is_less_than_80_percent_words_with_at_least_one_alphabetic_character(tokens:
 
 def gopher_quality_filter(text: str):
     tokens = word_tokenize(text)
-    print("tokens: ", tokens)
     lines = text.split("\n")
     if is_too_little_or_too_many_words(tokens):
         return False
