@@ -12,7 +12,8 @@ def identify_language_str(text: str):
     # I don't know why we're splitting across multiplines, I think the model cares. Probably just remove those 
     text = text.replace("\n", " ")
     predicted_language, score = _model().predict(text)
-    return predicted_language.split("__label__")[1], score[0]
+    print(predicted_language, score)
+    return predicted_language[0].split("__label__")[1], score[0]
 
     # # text can include multiple lines, so we need to figure out majority languaage
     # # split text into lines
