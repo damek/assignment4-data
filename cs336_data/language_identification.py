@@ -29,6 +29,7 @@ def extract_warc_and_detect_langauge(file: str, nb_entries: int = 1000) -> list[
     if not os.path.exists(file):
         os.system("bash look_at_cc.sh")
     if not os.path.exists("models/lid.176.bin"):
+        os.system("bash language_identification.sh")
     # We're going to pick 20 entries at random from the first 1000 entries 
     entries = random.sample(range(5000), nb_entries)
     with open(file, "rb") as f:
