@@ -1,5 +1,4 @@
 import nltk
-from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
 
@@ -18,6 +17,7 @@ def is_less_than_80_percent_words_with_at_least_one_alphabetic_character(tokens:
 
 def gopher_quality_filter(text: str):
     tokens = word_tokenize(text)
+    print("tokens: ", tokens)
     lines = text.split("\n")
     if is_too_little_or_too_many_words(tokens):
         return False
