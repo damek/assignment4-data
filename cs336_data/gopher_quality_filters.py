@@ -17,9 +17,8 @@ def less_than_80_percent_words_with_at_least_one_alphabetic_character(tokens: li
 
 def gopher_quality_filter(text: str):
     tokens = word_tokenize(text)
-    stop_words = set(stopwords.words('english'))
-    print(stop_words)
-    tokens = [word for word in tokens if word not in stop_words]
+    # stop_words = set(stopwords.words('english'))
+    # tokens = [word for word in tokens if word not in stop_words]
     lines = text.split("\n")
     if too_little_or_too_many_words(tokens):
         return False
