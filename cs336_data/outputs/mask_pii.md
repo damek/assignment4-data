@@ -73,8 +73,10 @@ Deliverable: A 2-5 sentence response.
 
 False positives:
 ```
-894 303 895 |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER||| |||PHONE_NUMBER|||
+http://naistekas.delfi.ee/joululeht/joulud/miks-mehed-ei-moista-et-45aastane-naine-on-palju-parem-kui-25ne.d?id=|||PHONE_NUMBER||| Vasta Tsiteeri```
 ```
 
 False Negatives: 
-Missed all the non US number.
+```
+ البريد الإلكتروني الخاص بك: معلومات@w88.com
+```
