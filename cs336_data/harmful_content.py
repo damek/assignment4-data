@@ -16,10 +16,12 @@ NSFW_MODEL = _model_NSFW()
 HATESPEECH_MODEL = _model_Hatespeech()
 
 def classify_nsfw(text: str):
-    return NSFW_MODEL.predict(text)
+    predicted_class, score = NSFW_MODEL.predict(text)
+    return predicted_class[0].split("__label__")[1], score[0]
 
 def classify_hatespeech(text: str):
-    return HATESPEECH_MODEL.predict(text)
+    predicted_class, score = HATESPEECH_MODEL.predict(text)
+    return predicted_class[0].split("__label__")[1], score[0]
 
 if __name__ == "__main__":
     print(classify_nsfw("OMFG"))
