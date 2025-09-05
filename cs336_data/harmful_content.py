@@ -26,13 +26,13 @@ def classify_nsfw(text: str):
     max_score = 0
     for text in texts:
         predicted_class, score = NSFW_MODEL.predict(text)
-        nsfw_labels.append(predicted_class[0].split("__label__")[1], score[0])
+        nsfw_labels.append((predicted_class[0].split("__label__")[1], score[0]))
         if score[0] > max_score:
             max_score = score[0]
             predicted_class = predicted_class[0].split("__label__")[1]
     return predicted_class, max_score
 
-def classify_hatespeech(text: str):
+def classify_hatespeech(t   ext: str):
     # remove newlines
     texts = text.split("\n")
     # our prediction is max over all the lines and max score
@@ -40,7 +40,7 @@ def classify_hatespeech(text: str):
     max_score = 0
     for text in texts:
         predicted_class, score = HATESPEECH_MODEL.predict(text)
-        hatespeech_labels.append(predicted_class[0].split("__label__")[1], score[0])
+        hatespeech_labels.append((predicted_class[0].split("__label__")[1], score[0]))
         if score[0] > max_score:
             max_score = score[0]
             predicted_class = predicted_class[0].split("__label__")[1]
