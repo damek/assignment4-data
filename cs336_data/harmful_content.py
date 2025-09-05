@@ -32,7 +32,7 @@ def classify_nsfw(text: str):
             predicted_class = predicted_class[0].split("__label__")[1]
     return predicted_class, max_score
 
-def classify_hatespeech(t   ext: str):
+def classify_hatespeech(text: str):
     # remove newlines
     texts = text.split("\n")
     # our prediction is max over all the lines and max score
