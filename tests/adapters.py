@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 from typing import Any
 from cs336_data.extract_text import extract_text_from_html_bytes
-
+from cs336_data.language_identification import identify_language_str
 
 
 def run_extract_text_from_html_bytes(html_bytes: bytes) -> str | None:
