@@ -1,5 +1,11 @@
 # CS336 Spring 2025 Assignment 4: Data
 
+## Problems
+
+- Looking at common crawl 
+  - Download warc and wet files: [look_at_cc.sh](./cs336_data/look_at_cc.sh)
+  - Writeup: [look_at_cc.md](./cs336_data/outputs/look_at_cc.md)
+
 ## How to run my code 
 
 ```bash
