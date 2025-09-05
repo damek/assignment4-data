@@ -21,7 +21,7 @@ def identify_language_file(file: str) -> str:
     with open(file, "rb") as f:
         return _model().predict(f.read())
 
-def extract_warc_and_detect_langauge(file: str) -> list[str]:
+def extract_warc_and_detect_langauge(file: str, nb_entries: int = 1000) -> list[str]:
     languages = []
     texts = []    
     # get path
@@ -29,18 +29,21 @@ def extract_warc_and_detect_langauge(file: str) -> list[str]:
     if not os.path.exists(file):
         os.system("bash look_at_cc.sh")
     if not os.path.exists("models/lid.176.bin"):
-        os.system("bash language_identification.sh")
     # We're going to pick 20 entries at random from the first 1000 entries 
+    entries = random.sample(range(5000), nb_entries)
     with open(file, "rb") as f:
         for i, record in enumerate(ArchiveIterator(f, record_types=WarcRecordType.response)):
-            text = extract_text.extract_text_from_html_bytes(record.reader.read())
-            languages.append(identify_language_str(text))
-            texts.append(text)
+            if i in entries:
+                text = extract_text.extract_text_from_html_bytes(record.reader.read())
+                languages.append(identify_language_str(text))
+                texts.append(text)
+            if len(texts) == nb_entries:
+                break
     return languages, texts
 
 if __name__ == "__main__":
 
-    languages, texts = extract_warc_and_detect_langauge(20)
+    languages, texts = extract_warc_and_detect_langauge(1000)
     for l,text in zip(languages, texts):
         print("--------------------------------")
         print("LANGUAGE: ", l[0], "SCORE: ", l[1])
