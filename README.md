@@ -5,6 +5,8 @@
 - Looking at common crawl 
   - Download warc and wet files: [look_at_cc.sh](./cs336_data/look_at_cc.sh)
   - Writeup: [look_at_cc.md](./cs336_data/outputs/look_at_cc.md)
+- Extract text from warc file: [extract_text.py](./cs336_data/extract_text.py)
+  - Writeup: [extract_text.md](./cs336_data/outputs/extract_text.md)
 
 ## How to run my code 
 
