@@ -13,8 +13,11 @@ fi
 # unzip the links.sample.txt.gz
 gzip -cd data/wiki/links.sample.txt.gz > data/wiki/links.sample.txt
 
-URLS="data/wiki/links.sample.txt"
-WBASE="data/wiki/links.sample"   # same folder as your list
+grep -vE 'washingtonpost\.com|nytimes\.com|bloomberg\.com|ft\.com|wsj\.com' \
+  data/wiki/links.sample.txt > data/wiki/links.sample.filtered.txt
+
+URLS="data/wiki/links.sample.filtered.txt"
+WBASE="data/wiki/links.sample.filtered"   # same folder as your list
 
 wget --no-verbose \
   --tries=1 \
