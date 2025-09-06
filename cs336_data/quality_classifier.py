@@ -52,9 +52,9 @@ def train_model(nb_samples: int = 1000):
     print("Building training data...")
     positive_urls_warc_text, negative_urls_warc_text = build_training_data(nb_samples)
     print("Saving training data...")
-    positive_file, negative_file = save_training_data(positive_urls_warc_text, negative_urls_warc_text)
+    training_data_file = save_training_data(positive_urls_warc_text, negative_urls_warc_text)
     print("Training model...")
-    model = fasttext.train_supervised(input=positive_file + " " + negative_file)
+    model = fasttext.train_supervised(input=training_data_file)
     print("Model trained...")
     model.save_model("models/wiki_quality_classifier.bin")
     return model
