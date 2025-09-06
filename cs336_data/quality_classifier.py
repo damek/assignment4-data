@@ -73,4 +73,4 @@ if __name__ == "__main__":
         print("Model found, loading model...")
     print("Model loaded...")
     print("Classifying quality...")
-    print("classify_quality(This is a test): ", classify_quality("93480  0s"))
+    print("classify_quality(sd): ", classify_quality("93480  0s"))
