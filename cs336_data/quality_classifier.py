@@ -38,6 +38,8 @@ def save_training_data(positive_urls_warc_text: list[str], negative_urls_warc_te
     # for each line, add __label__wiki or __label__cc
     positive_urls_warc_text = ["__label__high_quality " + text for text in positive_urls_warc_text]
     negative_urls_warc_text = ["__label__low_quality " + text for text in negative_urls_warc_text]
+    print("number of positive urls warc text: ", len(positive_urls_warc_text))
+    print("number of negative urls warc text: ", len(negative_urls_warc_text))
     # we need to add a \n to each sample then concatenate the files
     positive_urls_warc_text = "\n".join(positive_urls_warc_text)
     negative_urls_warc_text = "\n".join(negative_urls_warc_text)
@@ -71,25 +73,25 @@ def _model():
     return fasttext.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/wiki_quality_classifier.bin"))
 
 if __name__ == "__main__":
-    if not os.path.exists("models/wiki_quality_classifier.bin"):
-        print("No model found, training model...")
-        _ = train_model(nb_samples=2500)
-    else:
-        print("Model found, loading model...")
-    print("Model loaded...")
-    print("Classifying quality...")
+    # if not os.path.exists("models/wiki_quality_classifier.bin"):
+        # print("No model found, training model...")
+    _ = train_model(nb_samples=5000)
+    # else:
+        # print("Model found, loading model...")
+    # print("Model loaded...")
+    # print("Classifying quality...")
     # load a warc file from common crawl and then classify the quality
     # load 20 and 20 from warcs file and classify them
     # write the file with label to outputs/quality_classifier.txt
-    with open("outputs/quality_classifier_cc.txt", "w") as f:
-        f.write("label score text\n")
-    with open("data/CC/example.warc.gz", "rb") as f:
-        for record in ArchiveIterator(f, record_types=WarcRecordType.response):
-            text = extract_text.extract_text_from_html_bytes(record.reader.read())
-            label, score = classify_quality(text)
-            print("classify_quality(text): ", label, score)
-            with open("outputs/quality_classifier_cc.txt", "a") as f:
-                f.write(label[0] + " " + str(score) + " " + text + "\n")
+    # with open("outputs/quality_classifier_cc.txt", "w") as f:
+    #     f.write("label score text\n")
+    # with open("data/CC/example.warc.gz", "rb") as f:
+    #     for record in ArchiveIterator(f, record_types=WarcRecordType.response):
+    #         text = extract_text.extract_text_from_html_bytes(record.reader.read())
+    #         label, score = classify_quality(text)
+    #         print("classify_quality(text): ", label, score)
+    #         with open("outputs/quality_classifier_cc.txt", "a") as f:
+    #             f.write(label[0] + " " + str(score) + " " + text + "\n")
             
-    label, score = classify_quality("asf d eifia;f  0s")
-    print("classify_quality(sd): ", label, score)
+    # label, score = classify_quality("asf d eifia;f  0s")
+    # print("classify_quality(sd): ", label, score)
