@@ -77,6 +77,8 @@ if __name__ == "__main__":
     with open("data/CC/example.warc.gz", "rb") as f:
         for record in ArchiveIterator(f, record_types=WarcRecordType.response):
             text = extract_text.extract_text_from_html_bytes(record.reader.read())
-            print("classify_quality(text): ", classify_quality(text))
+            label, score = classify_quality(text.replace("\n", " "))
+            print("classify_quality(text): ", label, score)
             break
-    print("classify_quality(sd): ", classify_quality("asf d eifia;f  0s"))
+    label, score = classify_quality("asf d eifia;f  0s")
+    print("classify_quality(sd): ", label, score)
