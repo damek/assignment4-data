@@ -73,7 +73,7 @@ def _model():
 if __name__ == "__main__":
     if not os.path.exists("models/wiki_quality_classifier.bin"):
         print("No model found, training model...")
-        _ = train_model(nb_samples=1000)
+        _ = train_model(nb_samples=2500)
     else:
         print("Model found, loading model...")
     print("Model loaded...")
