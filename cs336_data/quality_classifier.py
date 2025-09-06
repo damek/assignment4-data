@@ -60,6 +60,7 @@ def train_model(nb_samples: int = 1000):
     return model
 
 def classify_quality(text: str):
+    text = text.replace("\n", " ")
     return _model().predict(text)
 
 def _model():
@@ -81,10 +82,10 @@ if __name__ == "__main__":
     with open("data/CC/example.warc.gz", "rb") as f:
         for record in ArchiveIterator(f, record_types=WarcRecordType.response):
             text = extract_text.extract_text_from_html_bytes(record.reader.read())
-            label, score = classify_quality(text.replace("\n", " "))[0]
+            label, score = classify_quality(text)[0]
             print("classify_quality(text): ", label, score)
             with open("outputs/quality_classifier_cc.txt", "a") as f:
                 f.write(label[0] + " " + str(score) + " " + text + "\n")
             
-    label, score = classify_quality("asf d eifia;f  0s")[0]
+    label, score = classify_quality("asf d eifia;f  0s")
     print("classify_quality(sd): ", label, score)
