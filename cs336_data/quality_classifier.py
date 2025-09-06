@@ -65,9 +65,9 @@ def classify_quality(text: str):
     text = text.replace("\n", " ")
     label, score = _model().predict(text)
     if label[0].split("__label__")[1] == "low_quality":
-        return "cc", score[0]
+        return "low_quality", score[0]
     else:
-        return "wiki", score[0]
+        return "high_quality", score[0]
 
 def _model():
     return fasttext.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/wiki_quality_classifier.bin"))

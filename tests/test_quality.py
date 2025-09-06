@@ -16,7 +16,7 @@ def test_classify_quality():
     print("low_quality_cc: ", prediction, score)
     print("--------------------------------")
     print(low_quality_cc)
-    assert prediction == "cc"
+    assert prediction == "low_quality"
     assert isinstance(score, float)
     assert score > 0
 
@@ -29,7 +29,7 @@ def test_classify_quality():
     print(high_quality_wiki)
     # TODO: you may have to change this check below, depending on what your
     # quality classifier returns.
-    assert prediction == "wiki"
+    assert prediction == "high_quality"
     assert isinstance(score, float)
     assert score > 0
 
