@@ -37,7 +37,7 @@ def build_training_data(nb_samples: int = 1000):
 def save_training_data(positive_urls_warc_text: list[str], negative_urls_warc_text: list[str]):
     # for each line, add __label__wiki or __label__cc
     positive_urls_warc_text = ["__label__high_quality " + text for text in positive_urls_warc_text]
-    negative_urls_warc_text = ["__label__not_quality " + text for text in negative_urls_warc_text]
+    negative_urls_warc_text = ["__label__low_quality " + text for text in negative_urls_warc_text]
     # we need to add a \n to each sample then concatenate the files
     positive_urls_warc_text = "\n".join(positive_urls_warc_text)
     negative_urls_warc_text = "\n".join(negative_urls_warc_text)
@@ -73,4 +73,10 @@ if __name__ == "__main__":
         print("Model found, loading model...")
     print("Model loaded...")
     print("Classifying quality...")
-    print("classify_quality(sd): ", classify_quality("93480  0s"))
+    # load a warc file from common crawl and then classify the quality
+    with open("data/CC/example.warc.gz", "rb") as f:
+        for record in ArchiveIterator(f, record_types=WarcRecordType.response):
+            text = extract_text.extract_text_from_html_bytes(record.reader.read())
+            print("classify_quality(text): ", classify_quality(text))
+            break
+    print("classify_quality(sd): ", classify_quality("asf d eifia;f  0s"))
