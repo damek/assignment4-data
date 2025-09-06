@@ -16,14 +16,13 @@ gzip -cd data/wiki/links.sample.txt.gz > data/wiki/links.sample.txt
 grep -vE 'washingtonpost\.com|nytimes\.com|bloomberg\.com|ft\.com|wsj\.com' \
   data/wiki/links.sample.txt > data/wiki/links.sample.filtered.txt
 
-URLS="data/wiki/links.sample.filtered.txt"
-WBASE="data/wiki/links.sample.filtered"   # same folder as your list
-
-wget --no-verbose \
+wget \
+  --no-verbose \
   --tries=1 \
   --timeout=5 --dns-timeout=5 --connect-timeout=5 --read-timeout=5 \
   --max-redirect=5 \
   --no-hsts \
-  --warc-file="$WBASE" --warc-cdx --warc-compression=gzip \
-  -i "$URLS" \
+  --warc-file=data/wiki/links.sample.filtered \
+  -i data/wiki/links.sample.filtered.txt \
   -O /dev/null
+
