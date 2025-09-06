@@ -1,5 +1,7 @@
 # CS336 Spring 2025 Assignment 4: Data
 
+Follow along on [twitter](https://x.com/damekdavis/status/1963789763309191250)
+
 ## Problems
 
 - Looking at common crawl 
@@ -19,6 +21,8 @@
 - Gopher quality filters:
   - Code: [gopher_quality_filters.py](./cs336_data/gopher_quality_filters.py)
   - Writeup: [gopher_quality_filters.md](./cs336_data/outputs/gopher_quality_filters.md)
+- Quality classifier: trained on 5000 outbound wiki links and 5000 cc samples.
+  - Code: [quality_classifier.py](./cs336_data/quality_classifier.py)
 
 ## How to run my code 
 
