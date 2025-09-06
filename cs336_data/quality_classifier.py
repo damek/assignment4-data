@@ -1,5 +1,5 @@
 import fasttext
-import fastwarc.warc import ArchiveIterator, WarcRecordType
+from fastwarc.warc import ArchiveIterator, WarcRecordType
 import os
 
 
