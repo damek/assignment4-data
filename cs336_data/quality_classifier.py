@@ -36,15 +36,16 @@ def build_training_data(nb_samples: int = 1000):
 
 def save_training_data(positive_urls_warc_text: list[str], negative_urls_warc_text: list[str]):
     # for each line, add __label__wiki or __label__cc
-    positive_urls_warc_text = ["__label__wiki " + text for text in positive_urls_warc_text]
-    negative_urls_warc_text = ["__label__cc " + text for text in negative_urls_warc_text]
-    with open("data/wiki/positive_urls_warc_text.txt", "w") as f:
-        for text in positive_urls_warc_text:
-            f.write(text + "\n")
-    with open("data/wiki/negative_urls_warc_text.txt", "w") as f:
-        for text in negative_urls_warc_text:
-            f.write(text + "\n")
-    return "data/wiki/positive_urls_warc_text.txt", "data/wiki/negative_urls_warc_text.txt"
+    positive_urls_warc_text = ["__label__high_quality " + text for text in positive_urls_warc_text]
+    negative_urls_warc_text = ["__label__not_quality " + text for text in negative_urls_warc_text]
+    # we need to add a \n to each sample then concatenate the files
+    positive_urls_warc_text = "\n".join(positive_urls_warc_text)
+    negative_urls_warc_text = "\n".join(negative_urls_warc_text)
+    # then we just save one training data file
+    training_data = positive_urls_warc_text + "\n" + negative_urls_warc_text
+    with open("data/wiki/training_data.txt", "w") as f:
+        f.write(training_data)
+    return "data/wiki/training_data.txt"
 
 def train_model(nb_samples: int = 1000):
     ## Build training data
