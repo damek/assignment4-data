@@ -13,9 +13,14 @@ fi
 # unzip the links.sample.txt.gz
 gzip -cd data/wiki/links.sample.txt.gz > data/wiki/links.sample.txt
 
-# next we'll use 
-wget --timeout=5 \
--i data/wiki/links.sample.txt \
--i data/wiki/links.sample.txt \
---warc-file=data/wiki/links.sample.warc \
--O /dev/null
+URLS="data/wiki/links.sample.txt"
+WBASE="data/wiki/links.sample"   # same folder as your list
+
+wget --no-verbose \
+  --tries=1 \
+  --timeout=5 --dns-timeout=5 --connect-timeout=5 --read-timeout=5 \
+  --max-redirect=5 \
+  --no-hsts \
+  --warc-file="$WBASE" --warc-cdx --warc-compression=gzip \
+  -i "$URLS" \
+  -O /dev/null
