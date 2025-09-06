@@ -7,7 +7,7 @@ mkdir -p data/wiki
 [ -f data/wiki/links.txt.gz ] || wget -O data/wiki/links.txt.gz "$URL"
 
 if [ ! -f data/wiki/links.sample.txt.gz ]; then
-  gzip -cd data/wiki/links.txt.gz | shuf -n 100000 | gzip -c > data/wiki/links.sample.txt.gz
+  gzip -cd data/wiki/links.txt.gz | shuf -n 5000 | gzip -c > data/wiki/links.sample.txt.gz
 fi
 
 # unzip the links.sample.txt.gz
@@ -15,6 +15,8 @@ gzip -cd data/wiki/links.sample.txt.gz > data/wiki/links.sample.txt
 
 grep -vE 'washingtonpost\.com|nytimes\.com|bloomberg\.com|ft\.com|wsj\.com' \
   data/wiki/links.sample.txt > data/wiki/links.sample.filtered.txt
+
+# In retrospect I should have used a parallel downloader and probably done less than 100000 urls.
 
 wget \
   --no-verbose \
