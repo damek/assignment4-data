@@ -82,7 +82,7 @@ if __name__ == "__main__":
     with open("data/CC/example.warc.gz", "rb") as f:
         for record in ArchiveIterator(f, record_types=WarcRecordType.response):
             text = extract_text.extract_text_from_html_bytes(record.reader.read())
-            label, score = classify_quality(text)[0]
+            label, score = classify_quality(text)
             print("classify_quality(text): ", label, score)
             with open("outputs/quality_classifier_cc.txt", "a") as f:
                 f.write(label[0] + " " + str(score) + " " + text + "\n")
