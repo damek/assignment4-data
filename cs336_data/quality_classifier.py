@@ -79,6 +79,6 @@ if __name__ == "__main__":
             text = extract_text.extract_text_from_html_bytes(record.reader.read())
             label, score = classify_quality(text.replace("\n", " "))
             print("classify_quality(text): ", label, score)
-            break
+            
     label, score = classify_quality("asf d eifia;f  0s")
     print("classify_quality(sd): ", label, score)
