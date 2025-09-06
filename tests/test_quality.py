@@ -24,6 +24,9 @@ def test_classify_quality():
     with open(high_quality_wiki_path) as f:
         high_quality_wiki = f.read()
     prediction, score = run_classify_quality(high_quality_wiki)
+    print("high_quality_wiki: ", prediction, score)
+    print("--------------------------------")
+    print(high_quality_wiki)
     # TODO: you may have to change this check below, depending on what your
     # quality classifier returns.
     assert prediction == "wiki"
