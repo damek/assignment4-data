@@ -43,9 +43,6 @@ def save_training_data(positive_urls_warc_text: list[str], negative_urls_warc_te
     negative_urls_warc_text = "\n".join(negative_urls_warc_text)
     # then we just save one training data file
     training_data = positive_urls_warc_text + "\n" + negative_urls_warc_text
-    # erase the previous training data file
-    if os.path.exists("data/wiki/training_data.txt"):
-        os.remove("data/wiki/training_data.txt")
     with open("data/wiki/training_data.txt", "w") as f:
         f.write(training_data)
     return "data/wiki/training_data.txt"
@@ -69,5 +66,11 @@ def _model():
     return fasttext.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/wiki_quality_classifier.bin"))
 
 if __name__ == "__main__":
-    train_model()
-    print("classify_quality(This is a test): ", classify_quality("This is a test"))
+    if not os.path.exists("models/wiki_quality_classifier.bin"):
+        print("No model found, training model...")
+        _ = train_model(nb_samples=1000)
+    else:
+        print("Model found, loading model...")
+    print("Model loaded...")
+    print("Classifying quality...")
+    print("classify_quality(This is a test): ", classify_quality("93480  0s"))
