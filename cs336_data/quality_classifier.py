@@ -1,7 +1,7 @@
 import fasttext
 from fastwarc.warc import ArchiveIterator, WarcRecordType
 import os
-
+import random
 
 def build_training_data(nb_samples: int = 1000): 
     positive_urls_warc = "data/wiki/links.sample.filtered.warc.gz"
