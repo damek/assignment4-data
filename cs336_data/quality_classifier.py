@@ -43,6 +43,9 @@ def save_training_data(positive_urls_warc_text: list[str], negative_urls_warc_te
     negative_urls_warc_text = "\n".join(negative_urls_warc_text)
     # then we just save one training data file
     training_data = positive_urls_warc_text + "\n" + negative_urls_warc_text
+    # erase the previous training data file
+    if os.path.exists("data/wiki/training_data.txt"):
+        os.remove("data/wiki/training_data.txt")
     with open("data/wiki/training_data.txt", "w") as f:
         f.write(training_data)
     return "data/wiki/training_data.txt"
