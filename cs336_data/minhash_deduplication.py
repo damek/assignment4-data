@@ -103,6 +103,6 @@ def minhash_deduplication(input_files: list[os.PathLike], output_directory: os.P
     for cluster in connected_components:
         i = random.choice(cluster)
             with open(output_directory / input_files[i].name, "w") as f:
-                with open(input_files[i], "r") as f:
-                    f.write(f.read())
+                with open(input_files[i], "r") as g:
+                    f.write(g.read())
     return connected_components
