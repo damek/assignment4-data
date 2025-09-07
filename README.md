@@ -25,6 +25,8 @@ Follow along on [twitter](https://x.com/damekdavis/status/1963789763309191250)
   - Code: [quality_classifier.py](./cs336_data/quality_classifier.py)
 - Exactly removing all lines that appear more than once in the corpus:
   - Code: [exact_deduplication.py](./cs336_data/exact_deduplication.py)
+- Minhash deduplication:
+  - Code: [minhash_deduplication.py](./cs336_data/minhash_deduplication.py)
 
 ## How to run my code 
 
