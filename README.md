@@ -1,6 +1,8 @@
 # CS336 Spring 2025 Assignment 4: Data
 
-Follow along on [twitter](https://x.com/damekdavis/status/1963789763309191250)
+Follow along on [twitter](https://x.com/damekdavis/status/1963789763309191250). 
+
+I finished most of this assignment. Unfortunately, the remaining part of the assignment relies on data that is only available on the together AI cluster + access to a cluster to filter 375GB of data. Thus, I will stop here.
 
 ## Problems
 
@@ -27,6 +29,8 @@ Follow along on [twitter](https://x.com/damekdavis/status/1963789763309191250)
   - Code: [exact_deduplication.py](./cs336_data/exact_deduplication.py)
 - Minhash deduplication:
   - Code: [minhash_deduplication.py](./cs336_data/minhash_deduplication.py)
+
+
 
 ## How to run my code 
 
