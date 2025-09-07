@@ -54,7 +54,7 @@ def check_if_some_band_matches(bucket1: list[int], bucket2: list[int]) -> bool:
 def compute_jaccard_similarity(n_gram_dict1: dict[str, int], n_gram_dict2: dict[str, int]) -> float:
     return len(set(n_gram_dict1) & set(n_gram_dict2)) / len(set(n_gram_dict1) | set(n_gram_dict2))
 
-
+# gpt 5 written.
 def get_connected_components(adj: dict[int, set[int]], n: int) -> list[list[int]]:
     seen, comps = set(), []
     for s in range(n):
