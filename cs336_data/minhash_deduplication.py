@@ -102,7 +102,7 @@ def minhash_deduplication(input_files: list[os.PathLike], output_directory: os.P
     # For each cluster, sample one document to keep and write to output directory. 
     for cluster in connected_components:
         i = random.choice(cluster)
-            with open(output_directory / input_files[i].name, "w") as f:
-                with open(input_files[i], "r") as g:
-                    f.write(g.read())
+        with open(output_directory / input_files[i].name, "w") as f:
+            with open(input_files[i], "r") as g:
+                f.write(g.read())
     return connected_components
