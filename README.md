@@ -23,6 +23,8 @@ Follow along on [twitter](https://x.com/damekdavis/status/1963789763309191250)
   - Writeup: [gopher_quality_filters.md](./cs336_data/outputs/gopher_quality_filters.md)
 - Quality classifier: trained on 5000 outbound wiki links and 5000 cc samples.
   - Code: [quality_classifier.py](./cs336_data/quality_classifier.py)
+- Exactly removing all lines that appear more than once in the corpus:
+  - Code: [exact_deduplication.py](./cs336_data/exact_deduplication.py)
 
 ## How to run my code 
 
